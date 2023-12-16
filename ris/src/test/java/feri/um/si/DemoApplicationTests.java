@@ -1,10 +1,10 @@
-package si.um.feri.ris;
+package feri.um.si;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class RisApplicationTests {
+class DemoApplicationTests {
 
 	@Test
 	void contextLoads() {
