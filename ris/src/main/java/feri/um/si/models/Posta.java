@@ -1,17 +1,17 @@
-package main.java.feri.um.si.models;
-
-import javax.persistence.*;
-
+package feri.um.si.models;
+import java.util.*;
 import java.util.Collection;
+import jakarta.persistence.*;
 
+//razredi ki nimajo tujega ključa zgledajo takle nekako
 @Entity
 public class Posta {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToMany(mappedBy = "posta", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "posta", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Collection<Naslov> naslov;
 
     public Long getId() {
