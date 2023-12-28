@@ -1,8 +1,8 @@
-drop table if exists Nepremicnine;
-drop table if exists Uporabnik;
 drop table if exists Termin_rezervacija;
 drop table if exists Ocena;
 drop table if exists Priljubljene;
+drop table if exists Nepremicnine;
+drop table if exists Uporabnik;
 drop table if exists Tip_uporabnika;
 drop table if exists Tip_nepremicnine;
 drop table if exists Naslov;
@@ -68,18 +68,18 @@ create table Naslov(
 );
 
 create table Posta(
-	stPoste int primary key not null auto_increment,
+	idPoste int primary key not null auto_increment,
     kraj varchar(45) not null
 );
 
-alter table Nepremicnine add constraint TK_uporabnik_nepremicnina foreign key (TK_Uporabnik) references Uporabnika(idUporabnik) on delete cascade;
+alter table Nepremicnine add constraint TK_uporabnik_nepremicnina foreign key (TK_Uporabnik) references Uporabnik(idUporabnik) on delete cascade;
 alter table Nepremicnine add constraint TK_naslov_nepremicnina foreign key (TK_Naslov) references Naslov(idNaslov) on delete cascade;
 alter table Nepremicnine add constraint TK_tip_nepremicnine_nepremicnina foreign key (TK_Tip_nepremicnine) references Tip_nepremicnine(idTip_nepremicnine) on delete cascade;
 alter table Uporabnik add constraint TK_Tip_uporabnika_uporabnik foreign key (TK_Tip_uporabnika) references Tip_uporabnika(idTip_uporabnika) on delete cascade;
 alter table Termin_rezervacija add constraint TK_Uporabnika foreign key (TK_Uporabnik) references Uporabnik(idUporabnik) on delete cascade;
-alter table Termin_rezervacija add constraint TK_Nepremicnina foreign key (TK_Nepremicnina) references Nepremicnine(idNepremicnine) on delete cascade;
-alter table Ocena add constraint TK_Nepremicnina_ocena foreign key (TK_Nepremicnina) references Nepremicnine(idNepremicnine) on delete cascade;
+alter table Termin_rezervacija add constraint TK_Nepremicnina foreign key (TK_Nepremicnine) references Nepremicnine(idNepremicnine) on delete cascade;
+alter table Ocena add constraint TK_Nepremicnina_ocena foreign key (TK_Nepremicnine) references Nepremicnine(idNepremicnine) on delete cascade;
 alter table Ocena add constraint TK_Uporabnik_ocena foreign key (TK_Uporabnik) references Uporabnik(idUporabnik) on delete cascade;
-alter table Priljubljene add constraint TK_Nepremicnine_priljubljene foreign key (TK_Nepremicnina) references Nepremicnine(idNepremicnine) on delete cascade;
+alter table Priljubljene add constraint TK_Nepremicnine_priljubljene foreign key (TK_Nepremicnine) references Nepremicnine(idNepremicnine) on delete cascade;
 alter table Priljubljene add constraint TK_Uporabnik_priljubljene foreign key (TK_Uporabnik) references Uporabnik(idUporabnik) on delete cascade;
-alter table Naslov add constraint TK_Posta_naslov foreign key (TK_Posta) references Posta(idPosta) on delete cascade;
+alter table Naslov add constraint TK_Posta_naslov foreign key (TK_Posta) references Posta(idPoste) on delete cascade;
