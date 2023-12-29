@@ -4,6 +4,7 @@ import java.util.Collection;
 import jakarta.persistence.*;
 
 //niam tujega ključa
+@Entity
 public class TipUporabnika{
 
     @Id

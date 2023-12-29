@@ -4,6 +4,7 @@ import java.util.Collection;
 import jakarta.persistence.*;
 
 //nima tujega kljuca
+@Entity
 public class TipNepremicnine{
 
     @Id

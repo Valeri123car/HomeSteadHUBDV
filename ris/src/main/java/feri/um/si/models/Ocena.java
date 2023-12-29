@@ -5,6 +5,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 //ima tuji ključ
+@Entity
 public class Ocena{
     
 }
