@@ -1,6 +1,9 @@
 package feri.um.si.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.Collection;
+
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -13,6 +16,9 @@ public class Naslov{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @OneToMany(mappedBy = "naslov", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Collection<Nepremicnine> nepremicnine;
 
     @ManyToOne
     @JoinColumn(name = "idPosta")
@@ -51,5 +57,14 @@ public class Naslov{
     public void setPosta(Posta posta) {
         this.posta = posta;
     }
+
+    public Collection<Nepremicnine> getNepremicnine() {
+        return this.nepremicnine;
+    }
+
+    public void setNepremicnine(Collection<Nepremicnine> nepremicnine) {
+        this.nepremicnine = nepremicnine;
+    }
+
 
 }
