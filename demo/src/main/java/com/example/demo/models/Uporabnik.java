@@ -124,4 +124,5 @@ public class Uporabnik {
     public void setRezervacije(List<Termin_rezervacija> rezervacije) {
         this.rezervacije = rezervacije;
     }
+
 }
