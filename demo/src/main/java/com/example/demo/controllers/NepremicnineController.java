@@ -16,4 +16,7 @@ public class NepremicnineController {
     public Iterable<Nepremicnine> vrniHise(){
         return nepremicninaDao.findAll();
     }
+
+
+
 }

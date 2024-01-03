@@ -14,6 +14,27 @@ public class Posta {
     private List<Naslov> naslovi = new ArrayList<>();
 
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
+    public String getKraj() {
+        return kraj;
+    }
+
+    public void setKraj(String kraj) {
+        this.kraj = kraj;
+    }
+
+    public List<Naslov> getNaslovi() {
+        return naslovi;
+    }
+
+    public void setNaslovi(List<Naslov> naslovi) {
+        this.naslovi = naslovi;
+    }
 }

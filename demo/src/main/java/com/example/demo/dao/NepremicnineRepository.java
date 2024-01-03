@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface NepremicnineRepository extends CrudRepository<Nepremicnine, String> {
-    @Query("select n from Nepremicnine n")
-    List<Nepremicnine> vrniVseNepremicnine();
+public interface NepremicnineRepository extends CrudRepository<Nepremicnine, Long> {
+   /* @Query("select n from Nepremicnine n")
+    List<Nepremicnine> vrniVseNepremicnine();*/
 }
