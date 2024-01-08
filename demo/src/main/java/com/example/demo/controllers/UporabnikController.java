@@ -13,7 +13,7 @@ public class UporabnikController {
     @Autowired
     private UporabnikRepository uporabnikDao;
 
-    @GetMapping("/uporabniki")
+    @GetMapping("/uporabnik")
     public Iterable<Uporabnik> vrniUporabnike(){
         return uporabnikDao.findAll();
     }
