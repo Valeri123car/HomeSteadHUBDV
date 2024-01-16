@@ -7,6 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface NepremicnineRepository extends CrudRepository<Nepremicnine, Long> {
-   /* @Query("select n from Nepremicnine n")
+    //
+    /*@Query(value="select id_nepremicnine, n.naziv, n.opis, n.cena, na.st, na.ulica from nepremicnine n INNER JOIN naslov na ON n.naslov_id_naslov = na.id_naslov", nativeQuery = true)
     List<Nepremicnine> vrniVseNepremicnine();*/
 }

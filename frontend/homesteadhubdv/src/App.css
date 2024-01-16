@@ -28,6 +28,86 @@
   color: #61dafb;
 }
 
+.podNav{
+  display: flex;
+  background-image: url("slike/neki.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 40vh;
+  background-attachment: fixed;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: white;
+  font-weight: 500;
+}
+.nepremicnineStr{
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  align-items: center;
+  background-color: whitesmoke;
+}
+
+.nepremicnineContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90vw;
+  flex-direction: column;
+  
+}
+
+.nep_slika{
+  width: 15vw;
+  height: 20vh;
+  background-color: aqua;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+
+.nep_text{
+  display: flex;
+  /* background-color: antiquewhite; */
+  flex-direction: column;
+  width: 25vw;
+  align-items: center;
+}
+
+
+
+.nepItemContainer{
+  display: flex;
+  /* background-color: #61dafb; */
+  gap: 2rem;
+  width: 100vw;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  }
+
+  .nepItem{
+    display: flex;
+    width: 45vw;
+    /* border: 1px solid black; */
+    height: 30vh;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 2rem;
+    background-color: white;
+  }
+
+  /* .nepItemContainer :hover{
+     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  } */
+
+
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
