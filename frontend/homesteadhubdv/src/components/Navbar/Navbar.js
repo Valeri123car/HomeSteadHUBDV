@@ -6,10 +6,12 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import HomeIcon from "@mui/icons-material/Home";
 
 export default function Navbar() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1 }} className="navbar">
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -19,17 +21,22 @@ export default function Navbar() {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            <MenuIcon />
+            <Link to="/" className="linki">
+              <HomeIcon />
+            </Link>
           </IconButton>
           <Typography
             variant="h6"
             component="div"
             sx={{ flexGrow: 1 }}
           ></Typography>
-          <Button color="inherit">Prijava</Button>
+          <Button color="inherit">
+            <Link className="linki" to={"/prijava"}>
+              Prijava
+            </Link>
+          </Button>
         </Toolbar>
       </AppBar>
-      <div className="podNav">HomesteadDV</div>
     </Box>
   );
 }

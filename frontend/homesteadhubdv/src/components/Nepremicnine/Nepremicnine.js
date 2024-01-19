@@ -12,7 +12,7 @@ const NepremicnineApp = () => {
       .get("http://localhost:8080/api/v1/nepremicnine")
       .then((response) => {
         setData(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -23,6 +23,7 @@ const NepremicnineApp = () => {
     <div className="nepremicnineStr">
       <div className="navbar">
         <Navbar></Navbar>
+        <div className="podNav">HomesteadDV</div>
       </div>
       <div className="nepremicnineContainer">
         <h1 className="naslov">Nepremicnine</h1>

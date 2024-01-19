@@ -105,6 +105,16 @@
      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   } */
 
+  .linki{
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: white;
+
+  }
+  body{
+    overflow-x: hidden;
+  }
+
 
 
 

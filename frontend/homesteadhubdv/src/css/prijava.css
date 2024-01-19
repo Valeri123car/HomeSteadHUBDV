@@ -1,0 +1,32 @@
+.prijavaBackground{
+    display: flex;
+    background-image: url("../slike/neki.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    flex-direction: column;
+  }
+  
+  .prijavaMain{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  /* background-color: aqua; */
+  }
+  .prijavaOkno{
+    display: flex;
+    width: 30vw;
+    height: auto;
+    background-color: white;
+    border-radius: 5rem;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 3rem;
+  }
+
+  /* .prijavaButton{
+    color: white;
+    background-color: rgb(61, 89, 180);
+  } */

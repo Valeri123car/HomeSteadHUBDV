@@ -5,6 +5,7 @@ import Routing from "./components/routing/Routing";
 import Navbar from "./components/Navbar/Navbar";
 import * as ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
+import "./css/prijava.css";
 
 function App() {
   return (
