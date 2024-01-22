@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar/Navbar";
 import * as ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import "./css/prijava.css";
+import "./css/dodajNepremicnino.css";
 
 function App() {
   return (

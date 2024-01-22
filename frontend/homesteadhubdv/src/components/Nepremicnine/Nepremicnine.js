@@ -34,8 +34,7 @@ const NepremicnineApp = () => {
                 <div
                   className="nep_slika"
                   style={{
-                    backgroundImage:
-                      'url("https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?cs=srgb&dl=pexels-binyamin-mellish-106399.jpg&fm=jpg")',
+                    backgroundImage: 'url("' + item.slika + '")',
                   }}
                 ></div>
                 <div className="nep_text">

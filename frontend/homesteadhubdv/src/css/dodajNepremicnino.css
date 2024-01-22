@@ -1,0 +1,22 @@
+.dodajOkno{
+    display: flex;
+    width: 30vw;
+    height: auto;
+    background-color: white;
+    border-radius: 5rem;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.dodajNepMain{
+    display: flex;
+    flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+.selecti{
+    color: black;
+}

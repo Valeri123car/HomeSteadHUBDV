@@ -5,6 +5,8 @@ import Navbar from "../Navbar/Navbar";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 
 function Registracija() {
   const [ime, setIme] = useState("");
@@ -29,13 +31,9 @@ function Registracija() {
   //   };
 
   //tak bs ej
-  const spremeniTip = () => {
-    setTip_uporabnika(2); // Change to a different value, if needed
-  };
 
   const dodajUporabnika = () => {
     //howwwwwwww
-    spremeniTip();
 
     const uporabnik = {
       ime,
@@ -43,7 +41,7 @@ function Registracija() {
       gmail,
       telefonska,
       geslo,
-      tip_uporabnika,
+      tip_uporabnika: 2,
     };
 
     fetch("http://localhost:8080/api/v1/uporabniki", {
@@ -93,6 +91,13 @@ function Registracija() {
             value={geslo}
             onChange={(event) => setGeslo(event.target.value)}
           />
+
+          {/* <TextField
+            label="Tip uporabnika"
+            variant="outlined"
+            value={tip_uporabnika}
+            onChange={(event) => setIdTip_uporabnika(event.target.value)}
+          /> */}
 
           <Button className="prijavaButton" onClick={dodajUporabnika}>
             Registracija

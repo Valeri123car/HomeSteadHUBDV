@@ -3,7 +3,8 @@
     background-image: url("../slike/neki.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
     flex-direction: column;
   }
   
