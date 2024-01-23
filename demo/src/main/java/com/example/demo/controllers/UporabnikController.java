@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
@@ -42,7 +43,12 @@ public class UporabnikController {
         if (userOptional.isPresent()) {
             Uporabnik user = userOptional.get();
 
-            return ResponseEntity.ok(Collections.singletonMap("userId", user.getIdUporabnik()));
+            Map<String, Object> responseMap = new HashMap<>();
+            responseMap.put("userId", user.getIdUporabnik());
+            responseMap.put("userType", user.getTipUporabnika());
+            //return ResponseEntity.ok(Collections.singletonMap("userId", user.getIdUporabnik()));
+
+            return ResponseEntity.ok(responseMap);
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
         }

@@ -24,9 +24,12 @@ function Prijava() {
     if (response.ok) {
       const data = await response.json();
       const userId = data.userId;
-      console.log(`Uspešna prijava. id: ${userId}`);
+      const userType = data.userType;
+      //console.log(`Uspešna prijava. id: ${userId}`);
+      //console.log(`Uspešna prijava. id: ${userType}`);
       alert("Uspesna prijava");
-      sessionStorage.setItem("uporabnik", data.userId);
+      sessionStorage.setItem("uporabnik", userId);
+      sessionStorage.setItem("tip_uporabnik", userType);
     } else {
       alert("Neuspesna prijava");
     }
