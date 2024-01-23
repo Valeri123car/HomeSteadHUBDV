@@ -16,31 +16,32 @@ public class NepremicnineController {
 
     @Autowired
     private NepremicnineRepository nepremicninaDao;
+
     @GetMapping("/nepremicnine")
-    public Iterable<Nepremicnine> vrniHise(){
+    public Iterable<Nepremicnine> vrniHise() {
         return nepremicninaDao.findAll();
     }
 
-    /*@GetMapping("/nepremicnineVse")
-    public Iterable<Nepremicnine> vrniVseNepremicnine(){
-        return nepremicninaDao.vrniVseNepremicnine();
-    }*/
+    /*
+     * @GetMapping("/nepremicnineVse")
+     * public Iterable<Nepremicnine> vrniVseNepremicnine(){
+     * return nepremicninaDao.vrniVseNepremicnine();
+     * }
+     */
 
     //
 
     @PostMapping("/dodajNepremicnino")
-    public Nepremicnine dodajNepremicnino(@RequestBody Nepremicnine nepremicnine){
+    public Nepremicnine dodajNepremicnino(@RequestBody Nepremicnine nepremicnine) {
         return nepremicninaDao.save(nepremicnine);
     }
 
+    @GetMapping("/ogledNepremicnine/{id}")
+    public ResponseEntity<List<Nepremicnine>> vrniNepremicnino(@PathVariable("id") Long id) {
+        List<Nepremicnine> nepremicnineList = nepremicninaDao.vrniNepremicnino(id);
+        return new ResponseEntity<>(nepremicnineList, HttpStatus.OK);
+    }
 
-
-        @GetMapping("/ogledNepremicnine/{id}")
-        public ResponseEntity<List<Nepremicnine>> vrniNepremicnino(@PathVariable("id") Long id) {
-            List<Nepremicnine> nepremicnineList = nepremicninaDao.vrniNepremicnino(id);
-            return new ResponseEntity<>(nepremicnineList, HttpStatus.OK);
-        }
-
-
+    // @PostMapping("/izbrisiNepremicnino")
 
 }

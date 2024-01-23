@@ -7,6 +7,7 @@ import Prijava from "../prijava/Prijava";
 import Registracija from "../prijava/Registracija";
 import PageNotFound from "../PageNotFound/PageNotFound";
 import OgledNepremicnine from "../Nepremicnine/ogledNepremicnine";
+import OdstraniNepremicnino from "../Nepremicnine/odstraniNepremicnino";
 
 export default function Routing() {
   return (
@@ -17,6 +18,6 @@ export default function Routing() {
       <Route path="/dodajNepremicnino" element={<DodajNepremicnino />} />
       <Route path="/ogledNepremicnine/:id" element={<OgledNepremicnine />} />
       <Route path="*" element={<PageNotFound />} />
-    </Routes>
+      <Route path="/odstraniNepremicnino" element={<OdstraniNepremicnino/>}/></Routes>
   );
 }
