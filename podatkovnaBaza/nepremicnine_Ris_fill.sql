@@ -1,5 +1,6 @@
 use homesteaddv;
 
+
 INSERT INTO Posta(id, kraj)
 VALUES(1000, "Ljubljana"),
 (2000, "Maribor"),

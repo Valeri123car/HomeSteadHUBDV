@@ -18,6 +18,18 @@ public class Uporabnik {
     private String geslo;
     private String telefonska;
 
+    private String tipUporabnika;
+
+    public String getTipUporabnika() {
+        return tipUporabnika;
+    }
+
+    public void setTipUporabnika(String tipUporabnika) {
+        this.tipUporabnika = tipUporabnika;
+    }
+
+
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tip_uporabnika_idTip_uporabnika")

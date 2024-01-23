@@ -15,7 +15,7 @@ function Registracija() {
   const [telefonska, setTelefonska] = useState("");
   const [geslo, setGeslo] = useState("");
   //nevem kako naredit da fking tuj ključ se vpise
-  const [tip_uporabnika, setTip_uporabnika] = useState(0);
+  const [tipUporabnika, setTipUporabnika] = useState(2);
 
   //   const dodajUporabnika = () => {
   //     api
@@ -41,7 +41,7 @@ function Registracija() {
       gmail,
       telefonska,
       geslo,
-      tip_uporabnika: 2,
+      tipUporabnika,
     };
 
     fetch("http://localhost:8080/api/v1/uporabniki", {
