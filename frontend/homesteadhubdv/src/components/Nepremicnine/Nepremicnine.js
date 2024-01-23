@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../Navbar/Navbar";
 import Button from "@mui/material/Button";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const NepremicnineApp = () => {
   const [data, setData] = useState([]);
@@ -42,6 +43,9 @@ const NepremicnineApp = () => {
                   <h2>{item.naziv}</h2>
                   <p>{item.opis}</p>
                   <p>{item.cena} €</p>
+                  <Link to={`/ogledNepremicnine/${item.idNepremicnine}`}>
+                    <Button>Ogled</Button>
+                  </Link>
                 </div>
               </div>
             ))}

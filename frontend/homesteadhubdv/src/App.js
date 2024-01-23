@@ -7,6 +7,7 @@ import * as ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import "./css/prijava.css";
 import "./css/dodajNepremicnino.css";
+import "./css/ogledNepremicnine.css";
 
 function App() {
   return (
