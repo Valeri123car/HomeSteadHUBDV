@@ -5,28 +5,25 @@ import Button from "@mui/material/Button";
 import { useParams } from "react-router-dom";
 
 const NepremicnineApp = () => {
-  const [nepremicnineData, setNepremicnineData] = useState([]);
-  const idNepremicnine = 2;
+  const [data, setData] = useState(null);
   const { id } = useParams();
-  //console.log(id);
-
+  console.log(id);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8080/api/v1/ogledNepremicnine/${id}`
+          "`http://localhost:8080/api/v1/ogledNepremicnine/${id}`"
         );
-
-        const data = await response.json();
-        setNepremicnineData(data);
+        const result = await response.json();
+        setData(result);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
 
     fetchData();
-  }, [idNepremicnine]);
-
+  }, []);
+  //`http://localhost:8080/api/v1/ogledNepremicnine/${id}`
   return (
     <div className="oglednepremicnineStr">
       <Navbar></Navbar>
