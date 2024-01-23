@@ -8,7 +8,6 @@ const NepremicnineApp = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    // Replace with your Spring Boot backend URL
     axios
       .get("http://localhost:8080/api/v1/nepremicnine")
       .then((response) => {

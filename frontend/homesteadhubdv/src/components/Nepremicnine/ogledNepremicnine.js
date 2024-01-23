@@ -1,44 +1,51 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import Navbar from "../Navbar/Navbar";
 import Button from "@mui/material/Button";
 import { useParams } from "react-router-dom";
+import api from "../../services/api";
 
 const NepremicnineApp = () => {
-  const [data, setData] = useState(null);
   const { id } = useParams();
-  console.log(id);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          "`http://localhost:8080/api/v1/ogledNepremicnine/${id}`"
-        );
-        const result = await response.json();
-        setData(result);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
+  const [data, setData] = useState({});
 
-    fetchData();
-  }, []);
+  useEffect(() => {
+    api
+      .get(`http://localhost:8080/api/v1/ogledNepremicnine/${id}`)
+      .then((response) => {
+        setData(response.data);
+        //console.log(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, [id]);
+
+  //   console.log(data);
+
   //`http://localhost:8080/api/v1/ogledNepremicnine/${id}`
   return (
     <div className="oglednepremicnineStr">
-      <Navbar></Navbar>
+      <Navbar />
       <div className="ogledBack">
         <div className="ogledNepremicnineContainer">
-          <div className="ogledItem">
-            <div className="ogledSlika"></div>
-            <div className="ogledText">
-              <h1>Naziv</h1>
-              <p>
-                sadsad asds adsadsadsadsad sad asd sad sad asd asds adsa sad sa
-              </p>
-              <p>Cena : 200000000€</p>
+          {data.length > 0 ? (
+            <div className="ogledItem">
+              <div
+                className="ogledSlika"
+                style={{
+                  backgroundImage: `url(${data[0].slika})`,
+                }}
+              ></div>
+              <div className="ogledText">
+                <h1>{data[0].naziv}</h1>
+                <p>{data[0].opis}</p>
+                <p>Cena : {data[0].cena}€</p>
+              </div>
             </div>
-          </div>
+          ) : (
+            <p>Loading data...</p>
+          )}
           <div className="ogledItem2">
             <div className="ogledText2">
               <h2>Lokacija</h2>

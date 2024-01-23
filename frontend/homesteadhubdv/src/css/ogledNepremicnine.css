@@ -54,6 +54,9 @@ align-items: center;
     width: 20vw;
     height: 30vh;
     background-color: aquamarine;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* background-image: url("https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg"); */
 }
 
 .ogledText{
@@ -62,6 +65,7 @@ align-items: center;
     height: 30vh;
     /* background-color: aquamarine; */
     flex-direction: column;
+    
 }
 
 .ogledText2{
