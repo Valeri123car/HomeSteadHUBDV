@@ -95,11 +95,13 @@
     display: flex;
     width: 45vw;
     /* border: 1px solid black; */
-    height: 30vh;
+    /* height: 30vh; */
+    height: auto;
     align-items: center;
     justify-content: space-around;
     border-radius: 2rem;
     background-color: white;
+    padding: 1rem 0;
   }
 
   /* .nepItemContainer :hover{

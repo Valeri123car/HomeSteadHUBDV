@@ -11,7 +11,7 @@ const NepremicnineApp = () => {
 
   useEffect(() => {
     api
-      .get(`http://localhost:8080/api/v1/ogledNepremicnine/${id}`)
+      .get(`http://localhost:8080/api/v1/nepremicnineVseKarJe/${id}`)
       .then((response) => {
         setData(response.data);
         //console.log(response.data);

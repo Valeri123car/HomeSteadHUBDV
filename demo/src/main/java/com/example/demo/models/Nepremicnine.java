@@ -23,7 +23,7 @@ public class Nepremicnine {
     private Tip_nepremicnine tip_nepremicnine;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "uporabnik_idUporabnik")
+    @JoinColumn(name = "uporabnik_id_uporabnik")
     @JsonIgnore
     private Uporabnik uporabnik;
 

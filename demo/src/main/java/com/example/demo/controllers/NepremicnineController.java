@@ -1,5 +1,7 @@
 package com.example.demo.controllers;
 
+import com.example.demo.DTO.NepremicninWithNaslovDTO;
+import com.example.demo.DTO.NepremicnineService;
 import com.example.demo.dao.NepremicnineRepository;
 import com.example.demo.models.Naslov;
 import com.example.demo.models.Nepremicnine;
@@ -69,6 +71,23 @@ public class NepremicnineController {
 
         nepremicninaDao.save(obstojeceNepremicnine);
         return ResponseEntity.ok("nepremicnina posodobljena uspesno");
+    }
+
+
+    @Autowired
+    private NepremicnineService nepremicninService;
+/*
+    @GetMapping("/nepremicnineVseKarJe")
+    public ResponseEntity<List<NepremicninWithNaslovDTO>> getAllNepremicninsWithNaslov() {
+        List<NepremicninWithNaslovDTO> nepremicnins = nepremicninService.getAllNepremicninsWithNaslov();
+        return new ResponseEntity<>(nepremicnins, HttpStatus.OK);
+    }
+*/
+
+    @GetMapping("/nepremicnineVseKarJe/{id}")
+    public ResponseEntity<List<NepremicninWithNaslovDTO>> getNepremicninsWithNaslovById(@PathVariable Long id) {
+        List<NepremicninWithNaslovDTO> nepremicnins = nepremicninService.getNepremicninsWithNaslovById(id);
+        return new ResponseEntity<>(nepremicnins, HttpStatus.OK);
     }
 
 }

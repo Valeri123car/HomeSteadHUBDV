@@ -24,6 +24,10 @@ const App = () => {
   const [st, setSt] = useState("");
   const [tip_nepremicnine_idTip_nepremicnine, setTip_nepremicnine] =
     useState(0);
+  const [idUporabnika, setUporabnik] = useState(
+    sessionStorage.getItem("uporabnik")
+  );
+
   //   const [posta_id, setPosta_id] = useState(0);
 
   const dodajNaslov = () => {
@@ -50,6 +54,7 @@ const App = () => {
       cena,
       slika,
       tip_nepremicnine_idTip_nepremicnine,
+      idUporabnika,
     };
 
     fetch("http://localhost:8080/api/v1/dodajNepremicnino", {

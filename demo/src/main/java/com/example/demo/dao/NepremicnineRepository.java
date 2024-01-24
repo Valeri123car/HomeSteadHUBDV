@@ -23,4 +23,7 @@ public interface NepremicnineRepository extends CrudRepository<Nepremicnine, Lon
     // @Query("SELECT n FROM Nepremicnine n JOIN n.naslov na WHERE n.idNepremicnine
     // = :id")
     // List<Nepremicnine> vrniNepremicnino(@Param("id") Long id);
+
+    @Query("SELECT n FROM Nepremicnine n WHERE n.idNepremicnine = :id")
+    List<Nepremicnine> vrniNepremicnine(@Param("id") Long id);
 }
