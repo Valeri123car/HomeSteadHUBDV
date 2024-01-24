@@ -10,7 +10,7 @@ const UporabnikiApp = () => {
 
   useEffect(() => {
     api
-      .get("/uporabnik")  
+      .get("/uporabniki/uporabnik")
       .then((response) => {
         setUsers(response.data);
       })
@@ -20,13 +20,12 @@ const UporabnikiApp = () => {
   }, []);
 
   const handleUpdate = (userId) => {
-
     console.log("Update user with ID:", userId);
   };
 
   const handleDelete = (userId) => {
     api
-      .delete(`/uporabnik/${userId}`)  
+      .delete(`/uporabnik/${userId}`)
       .then((response) => {
         console.log(response.data);
       })

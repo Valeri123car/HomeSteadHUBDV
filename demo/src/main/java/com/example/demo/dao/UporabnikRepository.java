@@ -13,6 +13,12 @@ import java.util.Optional;
 
 public interface UporabnikRepository extends CrudRepository<Uporabnik, Long> {
 
+
+/*
+        @Query("select u from Uporabnik u")
+        List<Uporabnik> vrniUporabnik();
+*/
+
     // TULE SEM DODAL DVA MODIFIJERJA
     @Modifying
     @Query("DELETE FROM Uporabnik u WHERE u.idUporabnik = :id")

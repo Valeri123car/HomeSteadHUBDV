@@ -21,12 +21,13 @@ public class UporabnikController {
     @Autowired
     private UporabnikRepository uporabnikDao;
 
-    @GetMapping("/uporabnik")
-    public Iterable<Uporabnik> vrniUporabnike() {
+    @GetMapping("/vsiUporabnik")
+    public Iterable<Uporabnik> vrniUporabnik() {
         return uporabnikDao.findAll();
     }
 
-    @PostMapping
+
+    @PostMapping("/dodajUporabnika")
     public Uporabnik dodajUporabnika(@RequestBody Uporabnik uporabnik) {
         return uporabnikDao.save(uporabnik);
     }
