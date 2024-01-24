@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -56,6 +57,18 @@ public class NepremicnineController {
         }
     }
 
-    // @PostMapping("/izbrisiNepremicnino")
+    @PutMapping("/nepremicnine/{id}")
+    public ResponseEntity<Object> updateNepremicnino(@PathVariable long id,
+            @RequestBody Nepremicnine nepremicnineAtributi) {
+        Nepremicnine obstojeceNepremicnine = nepremicninaDao.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "nepremicnina ni najdena"));
+
+        obstojeceNepremicnine.setNaziv(nepremicnineAtributi.getNaziv());
+        obstojeceNepremicnine.setOpis(nepremicnineAtributi.getOpis());
+        obstojeceNepremicnine.setCena(nepremicnineAtributi.getCena());
+
+        nepremicninaDao.save(obstojeceNepremicnine);
+        return ResponseEntity.ok("nepremicnina posodobljena uspesno");
+    }
 
 }
