@@ -13,12 +13,6 @@ import java.util.Optional;
 
 public interface UporabnikRepository extends CrudRepository<Uporabnik, Long> {
 
-
-/*
-        @Query("select u from Uporabnik u")
-        List<Uporabnik> vrniUporabnik();
-*/
-
     // TULE SEM DODAL DVA MODIFIJERJA
     @Modifying
     @Query("DELETE FROM Uporabnik u WHERE u.idUporabnik = :id")
@@ -28,6 +22,7 @@ public interface UporabnikRepository extends CrudRepository<Uporabnik, Long> {
     @Query("UPDATE Uporabnik u SET u.ime = :ime, u.gmail = :gmail WHERE u.idUporabnik = :id")
     void updateUporabnik(@Param("id") Long id, @Param("ime") String ime, @Param("gmail") String gmail);
 
+    // LOGIN
     @Query("select u from Uporabnik u where u.gmail = :gmail and u.geslo = :geslo")
     Optional<Uporabnik> vrniUporabnika(@Param("gmail") String gmail, @Param("geslo") String geslo);
 }

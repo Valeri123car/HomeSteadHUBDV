@@ -10,7 +10,7 @@ const UporabnikiApp = () => {
 
   useEffect(() => {
     api
-      .get("/uporabniki/uporabnik")
+      .get("/uporabniki/vsiUporabnik")
       .then((response) => {
         setUsers(response.data);
       })

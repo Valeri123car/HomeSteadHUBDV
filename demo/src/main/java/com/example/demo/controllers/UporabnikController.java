@@ -11,9 +11,11 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/uporabniki")
 public class UporabnikController {
@@ -21,11 +23,10 @@ public class UporabnikController {
     @Autowired
     private UporabnikRepository uporabnikDao;
 
-    @GetMapping("/vsiUporabnik")
-    public Iterable<Uporabnik> vrniUporabnik() {
-        return uporabnikDao.findAll();
+    @GetMapping("/vsiUporabniki")
+    public List<Uporabnik> vrniVseUporabnike() {
+        return (List<Uporabnik>) uporabnikDao.findAll();
     }
-
 
     @PostMapping("/dodajUporabnika")
     public Uporabnik dodajUporabnika(@RequestBody Uporabnik uporabnik) {
