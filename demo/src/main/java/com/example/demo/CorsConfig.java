@@ -1,4 +1,5 @@
 package com.example.demo;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
@@ -18,6 +19,7 @@ public class CorsConfig {
         configuration.addAllowedOrigin("http://localhost:3000");
         configuration.addAllowedMethod("*");
         configuration.addAllowedHeader("*");
+        configuration.addAllowedMethod();
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
@@ -25,14 +27,17 @@ public class CorsConfig {
         return source;
     }
 }
-/*public class CorsConfig implements WebMvcConfigurer {
-
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowedOrigins("http://localhost:3000") // Adjust this to your React app's URL
-                .allowedMethods("GET", "POST", "PUT", "DELETE")
-                .allowedHeaders("*")
-                .allowCredentials(true);
-    }
-}*/
+/*
+ * public class CorsConfig implements WebMvcConfigurer {
+ * 
+ * @Override
+ * public void addCorsMappings(CorsRegistry registry) {
+ * registry.addMapping("/**")
+ * .allowedOrigins("http://localhost:3000") // Adjust this to your React app's
+ * URL
+ * .allowedMethods("GET", "POST", "PUT", "DELETE")
+ * .allowedHeaders("*")
+ * .allowCredentials(true);
+ * }
+ * }
+ */

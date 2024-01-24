@@ -15,7 +15,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:3000")
+//zbris     "origins"
+@CrossOrigin("http://localhost:3000")
 @RestController
 @RequestMapping("/uporabniki")
 public class UporabnikController {
@@ -54,26 +55,4 @@ public class UporabnikController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
         }
     }
-
-    // TOLE SEM DODAL
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Object> izbrisiUporabnika(@PathVariable("id") Long id) {
-        try {
-            uporabnikDao.deleteByIdUporabnik(id);
-            return ResponseEntity.ok("User deleted successfully");
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error deleting user");
-        }
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Object> posodobiUporabnika(@PathVariable("id") Long id, @RequestBody Uporabnik updatedUser) {
-        try {
-            uporabnikDao.updateUporabnik(id, updatedUser.getIme(), updatedUser.getGmail());
-            return ResponseEntity.ok("User updated successfully");
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error updating user");
-        }
-    }
-
 }
