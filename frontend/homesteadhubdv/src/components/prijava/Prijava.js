@@ -3,11 +3,12 @@ import axios from "axios";
 import Navbar from "../Navbar/Navbar";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Prijava() {
   const [gmail, setGmail] = useState("");
   const [geslo, setGeslo] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     const response = await fetch(
@@ -30,6 +31,7 @@ function Prijava() {
       alert("Uspesna prijava");
       sessionStorage.setItem("uporabnik", userId);
       sessionStorage.setItem("tip_uporabnik", userType);
+      navigate("/");
     } else {
       alert("Neuspesna prijava");
     }
@@ -53,9 +55,11 @@ function Prijava() {
             onChange={(e) => setGeslo(e.target.value)}
           />
           <Link to={"/registracija"}>Nimate računa?</Link>
+          {/* <Link to={"/"}> */}
           <Button className="prijavaButton" onClick={handleLogin}>
             Prijava
           </Button>
+          {/* </Link> */}
         </div>
       </div>
     </div>

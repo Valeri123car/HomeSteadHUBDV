@@ -4,7 +4,7 @@ import api from "../../services/api";
 import Navbar from "../Navbar/Navbar";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 
@@ -16,6 +16,7 @@ function Registracija() {
   const [geslo, setGeslo] = useState("");
   //nevem kako naredit da fking tuj ključ se vpise
   const [tipUporabnika, setTipUporabnika] = useState(2);
+  const navigate = useNavigate();
 
   //   const dodajUporabnika = () => {
   //     api
@@ -43,15 +44,24 @@ function Registracija() {
       geslo,
       tipUporabnika,
     };
-
-    fetch("http://localhost:8080/api/v1/uporabniki/dodajUporabnika", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(uporabnik),
-    }).then(() => {
-      console.log("nov uporabnik dodan");
-      alert("uspesno dodan uporabnik");
-    });
+    if (
+      ime == "" ||
+      priimek == "" ||
+      gmail == "" ||
+      telefonska == "" ||
+      geslo == ""
+    ) {
+      alert("Izpolni vsa polja");
+    } else
+      fetch("http://localhost:8080/api/v1/uporabniki/dodajUporabnika", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(uporabnik),
+      }).then(() => {
+        console.log("nov uporabnik dodan");
+        alert("uspesno dodan uporabnik");
+        navigate("/prijava");
+      });
   };
 
   return (

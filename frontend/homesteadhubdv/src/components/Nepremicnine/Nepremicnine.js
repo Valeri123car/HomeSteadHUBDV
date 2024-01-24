@@ -3,6 +3,7 @@ import axios from "axios";
 import Navbar from "../Navbar/Navbar";
 import Button from "@mui/material/Button";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const NepremicnineApp = () => {
   const [data, setData] = useState([]);
@@ -50,7 +51,7 @@ const NepremicnineApp = () => {
             ))}
           </div>
         ) : (
-          <p>Loading data...</p>
+          <CircularProgress />
         )}
       </div>
     </div>
