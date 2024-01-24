@@ -5,9 +5,17 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const App = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (sessionStorage.getItem("tip_uporabnik") !== "2") {
+      navigate("/");
+    }
+  }, []);
+
   const [naziv, setNaziv] = useState("");
   const [opis, setOpis] = useState("");
   const [cena, setCena] = useState("");
