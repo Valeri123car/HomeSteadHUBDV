@@ -25,11 +25,17 @@ public class NepremicninWithNaslovDTO {
 
     private String kraj;
 
+    //tip_nepremicnine
+
+    private Long idTip_Nepremicnine;
+
+    private String Tip_nepremicnine;
+
 
     public NepremicninWithNaslovDTO() {
     }
 
-    public NepremicninWithNaslovDTO(Long idNepremicnine, String naziv, String opis, String slika, String cena, Long idNaslov, String ulica, String st, Long idUporabnik, String telefonska, Long id, String kraj) {
+    public NepremicninWithNaslovDTO(Long idNepremicnine, String naziv, String opis, String slika, String cena, Long idNaslov, String ulica, String st, Long idUporabnik, String telefonska, Long id, String kraj,Long idTip_Nepremicnine, String Tip_nepremicnine) {
         this.idNepremicnine = idNepremicnine;
         this.naziv = naziv;
         this.opis = opis;
@@ -42,6 +48,8 @@ public class NepremicninWithNaslovDTO {
         this.telefonska = telefonska;
         this.id = id;
         this.kraj = kraj;
+        this.idTip_Nepremicnine = idTip_Nepremicnine;
+        this.Tip_nepremicnine = Tip_nepremicnine;
     }
 
     public Long getIdNepremicnine() {
@@ -138,5 +146,21 @@ public class NepremicninWithNaslovDTO {
 
     public void setKraj(String kraj) {
         this.kraj = kraj;
+    }
+
+    public Long getIdTip_Nepremicnine() {
+        return idTip_Nepremicnine;
+    }
+
+    public void setIdTip_Nepremicnine(Long idTip_Nepremicnine) {
+        this.idTip_Nepremicnine = idTip_Nepremicnine;
+    }
+
+    public String getTip_nepremicnine() {
+        return Tip_nepremicnine;
+    }
+
+    public void setTip_nepremicnine(String tip_nepremicnine) {
+        Tip_nepremicnine = tip_nepremicnine;
     }
 }

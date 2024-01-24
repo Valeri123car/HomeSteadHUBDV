@@ -34,7 +34,8 @@ public class NepremicnineService {
                         nepremicnin.getNaslov().getIdNaslov(), nepremicnin.getNaslov().getUlica(),
                         nepremicnin.getNaslov().getSt(),
                         nepremicnin.getUporabnik().getIdUporabnik(), nepremicnin.getUporabnik().getTelefonska(),
-                        nepremicnin.getNaslov().getPosta().getId(), nepremicnin.getNaslov().getPosta().getKraj()
+                        nepremicnin.getNaslov().getPosta().getId(), nepremicnin.getNaslov().getPosta().getKraj(),
+                        nepremicnin.getTip_nepremicnine().getIdTip_Nepremicnine(), nepremicnin.getTip_nepremicnine().getTip_nepremicnine()
                 );
                 dtoList.add(dto);
             } else {

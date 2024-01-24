@@ -41,41 +41,47 @@ const NepremicnineApp = () => {
                 <h1>{data[0].naziv}</h1>
                 <p>{data[0].opis}</p>
                 <p>Cena : {data[0].cena}€</p>
-                <p>Tip_nepremicnine:</p>
+                <p>
+                  <b>Tip_nepremicnine:</b> {data[0].tip_nepremicnine}
+                </p>
               </div>
             </div>
           ) : (
             <p>Loading data...</p>
           )}
-          <div className="ogledItem2">
-            <div className="ogledText2">
-              <h2>Lokacija</h2>
-              <div className="lokacijaCon">
-                <div className="kraj">
-                  <h3> Kraj: </h3>
-                  <p>
-                    {data[0].kraj}, {data[0].id}
-                  </p>
-                </div>
-                <div className="naslov">
-                  <h3>Naslov</h3>
-                  <p>
-                    {data[0].ulica}, {data[0].st}
-                  </p>
+          {data.length > 0 ? (
+            <div className="ogledItem2">
+              <div className="ogledText2">
+                <h2>Lokacija</h2>
+                <div className="lokacijaCon">
+                  <div className="kraj">
+                    <h3> Kraj: </h3>
+                    <p>
+                      {data[0].kraj}, {data[0].id}
+                    </p>
+                  </div>
+                  <div className="naslov">
+                    <h3>Naslov</h3>
+                    <p>
+                      {data[0].ulica}, {data[0].st}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="ogledText2">
-              <div className="kontaktCon">
-                <div className="kontakt">
-                  <h2>Kontakt</h2>
-                  <p>Telefonska: {data[0].telefonska}</p>
-                </div>
+              <div className="ogledText2">
+                <div className="kontaktCon">
+                  <div className="kontakt">
+                    <h2>Kontakt</h2>
+                    <p>Telefonska: {data[0].telefonska}</p>
+                  </div>
 
-                <h2>Termini rezervacije:</h2>
+                  <h2>Termini rezervacije:</h2>
+                </div>
               </div>
             </div>
-          </div>
+          ) : (
+            <p>Loading data...</p>
+          )}
         </div>
       </div>
     </div>
