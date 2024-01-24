@@ -42,6 +42,20 @@ public class NepremicnineController {
         return new ResponseEntity<>(nepremicnineList, HttpStatus.OK);
     }
 
+    @DeleteMapping("/nepremicnine/{id}")
+    public ResponseEntity<Object> izbrisiNepremicnino(@PathVariable("id") Long id) {
+        if (!nepremicninaDao.existsById(id)) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nepremicnina not found");
+        }
+
+        try {
+            nepremicninaDao.deleteById(id);
+            return ResponseEntity.ok("Nepremicnina deleted successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error deleting nepremicnina");
+        }
+    }
+
     // @PostMapping("/izbrisiNepremicnino")
 
 }

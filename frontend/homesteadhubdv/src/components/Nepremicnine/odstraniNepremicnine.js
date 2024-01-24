@@ -9,9 +9,8 @@ const NepremicnineApp = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    
     axios
-      .get("http://localhost:8080/api/v1/nepremicnine")
+      .get("http://localhost:8080/api/v1/nepremicnine") 
       .then((response) => {
         setData(response.data);
       })
@@ -21,12 +20,13 @@ const NepremicnineApp = () => {
   }, []);
 
   const handleDelete = (id) => {
-
     axios
-      .delete(`http://localhost:8080/api/v1/nepremicnine/${id}`)
+      .delete(`http://localhost:8080/api/v1/nepremicnine/${id}`) // Add a forward slash before ${id}
       .then((response) => {
-
-        axios.get("http://localhost:8080/api/v1/nepremicnine")
+        console.log(response.data);
+  
+        axios
+          .get("http://localhost:8080/api/v1/nepremicnine")
           .then((response) => {
             setData(response.data);
           })
@@ -35,7 +35,7 @@ const NepremicnineApp = () => {
           });
       })
       .catch((error) => {
-        console.error("Error deleting data:", error);
+        console.error("neki se slo narobe delete:", error);
       });
   };
 
