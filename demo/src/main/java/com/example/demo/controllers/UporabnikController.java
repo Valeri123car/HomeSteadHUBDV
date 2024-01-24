@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -30,13 +31,10 @@ public class UporabnikController {
         return uporabnikDao.save(uporabnik);
     }
 
-
     @PostMapping("/login")
     public ResponseEntity<Object> login(@RequestBody Map<String, String> credentials) {
         String username = credentials.get("gmail");
         String password = credentials.get("geslo");
-
-
 
         Optional<Uporabnik> userOptional = uporabnikDao.vrniUporabnika(username, password);
 
@@ -46,7 +44,8 @@ public class UporabnikController {
             Map<String, Object> responseMap = new HashMap<>();
             responseMap.put("userId", user.getIdUporabnik());
             responseMap.put("userType", user.getTipUporabnika());
-            //return ResponseEntity.ok(Collections.singletonMap("userId", user.getIdUporabnik()));
+            // return ResponseEntity.ok(Collections.singletonMap("userId",
+            // user.getIdUporabnik()));
 
             return ResponseEntity.ok(responseMap);
         } else {
@@ -54,6 +53,25 @@ public class UporabnikController {
         }
     }
 
+    // TOLE SEM DODAL
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> izbrisiUporabnika(@PathVariable("id") Long id) {
+        try {
+            uporabnikDao.deleteByIdUporabnik(id);
+            return ResponseEntity.ok("User deleted successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error deleting user");
+        }
+    }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> posodobiUporabnika(@PathVariable("id") Long id, @RequestBody Uporabnik updatedUser) {
+        try {
+            uporabnikDao.updateUporabnik(id, updatedUser.getIme(), updatedUser.getGmail());
+            return ResponseEntity.ok("User updated successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error updating user");
+        }
+    }
 
 }
