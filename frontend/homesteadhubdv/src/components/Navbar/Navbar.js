@@ -19,8 +19,9 @@ export default function Navbar() {
   function odjava() {
     sessionStorage.clear();
     navigate("/");
+    window.location.reload();
   }
-  console.log(sessionStorage.getItem("tip_uporabnik"));
+  // console.log(sessionStorage.getItem("tip_uporabnik"));
   if (sessionStorage.getItem("tip_uporabnik") == 2) {
     return (
       <Box sx={{ flexGrow: 1 }} className="navbar">
@@ -77,6 +78,11 @@ export default function Navbar() {
               component="div"
               sx={{ flexGrow: 1 }}
             ></Typography>
+            <Button color="inherit">
+              <Link className="linki" to={"/uporabniki"}>
+                Upravljanje uporabnikov
+              </Link>
+            </Button>
             <Button color="inherit">
               <Link className="linki" to={"/nepremicnine"}>
                 Upravljanje nepremicnin

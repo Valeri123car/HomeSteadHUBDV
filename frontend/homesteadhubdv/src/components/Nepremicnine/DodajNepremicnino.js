@@ -22,7 +22,8 @@ const App = () => {
   const [slika, setSlika] = useState("");
   const [ulica, setUlica] = useState("");
   const [st, setSt] = useState("");
-  const [tip_nepremicnine] = useState(0);
+  const [kraj, setSelectedKraj] = useState("");
+  const [tip_nepremicnine, setSelectedTipNepremicnine] = useState("");
   const [idUporabnika, setUporabnik] = useState(
     sessionStorage.getItem("uporabnik")
   );
@@ -33,17 +34,32 @@ const App = () => {
     const naslov = {
       ulica,
       st,
+      kraj,
       //   posta_id,
     };
+
+    console.log(naslov);
 
     fetch("http://localhost:8080/api/v1/dodajNaslov", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(naslov),
     }).then(() => {
-      console.log("nov uporabnik dodan");
-      alert("uspesno dodan uporabnik");
+      console.log("dodan naslov");
     });
+  };
+  //`http://localhost:8080/api/v1//naslovNepremicnine/${ulica}/${st}`
+
+  const fetchNaslovId = () => {
+    axios
+      .get(`http://localhost:8080/api/v1/naslovNepremicnine/${ulica}/${st}`)
+      .then((response) => {
+        const idNaslov = response.data[0];
+        console.log("Naslov ID:", idNaslov);
+      })
+      .catch((error) => {
+        console.error("Napaka pri pridobivanju id", error);
+      });
   };
 
   const dodajNepremicnino = () => {
@@ -52,23 +68,26 @@ const App = () => {
       opis,
       cena,
       slika,
-      tip_nepremicnine: { idTip_Nepremicnine: 1 },
+      tip_nepremicnine: { idTip_Nepremicnine: tip_nepremicnine },
       idUporabnika,
     };
+    console.log(nepremicnina);
 
     fetch("http://localhost:8080/api/v1/dodajNepremicnino", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(nepremicnina),
     }).then(() => {
-      console.log("nov uporabnik dodan");
-      alert("uspesno dodan uporabnik");
+      console.log("dodana nepremicnina");
+      alert("uspesno dodana nepremicnina");
+      navigate("/");
     });
   };
 
   const dodaja = () => {
-    dodajNepremicnino();
     dodajNaslov();
+    fetchNaslovId();
+    dodajNepremicnino();
   };
 
   return (
@@ -109,8 +128,8 @@ const App = () => {
             onChange={(event) => setSt(event.target.value)}
           />
           <Select
-            // value={selectedValue}
-            // onChange={handleChange}
+            value={kraj}
+            onChange={(event) => setSelectedKraj(event.target.value)}
             label="Kraj"
             className="selecti"
           >
@@ -126,8 +145,9 @@ const App = () => {
             <MenuItem value="9000">Murska Sobota</MenuItem>
           </Select>
           <Select
-            // value={selectedValue}
+            value={tip_nepremicnine}
             // onChange={handleChange}
+            onChange={(event) => setSelectedTipNepremicnine(event.target.value)}
             label="Tip nepremicnine"
           >
             <MenuItem value="1">Novogradnja</MenuItem>

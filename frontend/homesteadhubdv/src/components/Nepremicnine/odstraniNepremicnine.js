@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../Navbar/Navbar";
 import Button from "@mui/material/Button";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import "../../css/odstraniNepremicnino.css";
 
 const NepremicnineApp = () => {
@@ -13,8 +13,13 @@ const NepremicnineApp = () => {
     opis: "",
     cena: "",
   });
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (sessionStorage.getItem("tip_uporabnik") !== "1") {
+      navigate("/");
+    }
+
     axios
       .get("http://localhost:8080/api/v1/nepremicnine")
       .then((response) => {

@@ -112,6 +112,7 @@ const Registracija = () => {
             label="Geslo"
             variant="outlined"
             value={geslo}
+            type="password"
             onChange={(event) => setGeslo(event.target.value)}
           />
 

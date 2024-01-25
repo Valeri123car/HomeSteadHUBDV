@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../Navbar/Navbar";
 import Button from "@mui/material/Button";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import "../../css/odstraniNepremicnino.css";
 import api from "../../services/api";
 
@@ -18,7 +18,13 @@ const UporabnikiApp = () => {
     telefonska: "",
   });
 
+  const navigate = useNavigate();
+
   useEffect(() => {
+    if (sessionStorage.getItem("tip_uporabnik") !== "1") {
+      navigate("/");
+    }
+
     axios
       .get("http://localhost:8080/api/v1/uporabnikiTest")
       .then((response) => {
@@ -150,9 +156,9 @@ const UporabnikiApp = () => {
               }
             />
 
-            <label>Cena:</label>
+            <label>gmail:</label>
             <input
-              type="number"
+              type="text"
               value={updateData.gmail}
               onChange={(e) =>
                 setUpdateData({ ...updateData, gmail: e.target.value })
