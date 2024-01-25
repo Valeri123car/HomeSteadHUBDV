@@ -18,15 +18,15 @@ import java.util.Optional;
 //zbris     "origins"
 @CrossOrigin("http://localhost:3000")
 @RestController
-@RequestMapping("/uporabniki")
 public class UporabnikController {
 
     @Autowired
     private UporabnikRepository uporabnikDao;
 
     @GetMapping("/vsiUporabniki")
-    public List<Uporabnik> vrniVseUporabnike() {
-        return (List<Uporabnik>) uporabnikDao.findAll();
+    public ResponseEntity<List<Uporabnik>> vrniVseUporabnike(@PathVariable("gmail") String gmail) {
+        List<Uporabnik> uporabniki = uporabnikDao.vrniUporabnika(gmail);
+        return new ResponseEntity<>(uporabniki, HttpStatus.OK);
     }
 
     @PostMapping("/dodajUporabnika")

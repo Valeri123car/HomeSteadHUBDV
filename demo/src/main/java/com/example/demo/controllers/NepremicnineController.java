@@ -21,7 +21,7 @@ public class NepremicnineController {
     @Autowired
     private NepremicnineRepository nepremicninaDao;
 
-    //private ZdruzeneRepository zdruzeneRepository;
+    // private ZdruzeneRepository zdruzeneRepository;
 
     @GetMapping("/nepremicnine")
     public Iterable<Nepremicnine> vrniHise() {
@@ -48,15 +48,15 @@ public class NepremicnineController {
         return new ResponseEntity<>(nepremicnineList, HttpStatus.OK);
     }
 
-    //vrniFiltr
+    // vrniFiltr
 
     /*
-    @GetMapping("/vseKarJe")
-    public ResponseEntity<List<Nepremicnine>> vrniFiltr() {
-        List<Nepremicnine> nepremicnineList = nepremicninaDao.vrniFiltr();
-        return new ResponseEntity<>(nepremicnineList, HttpStatus.OK);
-    }
-*/
+     * @GetMapping("/vseKarJe")
+     * public ResponseEntity<List<Nepremicnine>> vrniFiltr() {
+     * List<Nepremicnine> nepremicnineList = nepremicninaDao.vrniFiltr();
+     * return new ResponseEntity<>(nepremicnineList, HttpStatus.OK);
+     * }
+     */
 
     @DeleteMapping("/nepremicnine/{id}")
     public ResponseEntity<Object> izbrisiNepremicnino(@PathVariable("id") Long id) {
@@ -86,16 +86,17 @@ public class NepremicnineController {
         return ResponseEntity.ok("nepremicnina posodobljena uspesno");
     }
 
-
     @Autowired
     private NepremicnineService nepremicninService;
-/*
-    @GetMapping("/nepremicnineVseKarJe")
-    public ResponseEntity<List<NepremicninWithNaslovDTO>> getAllNepremicninsWithNaslov() {
-        List<NepremicninWithNaslovDTO> nepremicnins = nepremicninService.getAllNepremicninsWithNaslov();
-        return new ResponseEntity<>(nepremicnins, HttpStatus.OK);
-    }
-*/
+    /*
+     * @GetMapping("/nepremicnineVseKarJe")
+     * public ResponseEntity<List<NepremicninWithNaslovDTO>>
+     * getAllNepremicninsWithNaslov() {
+     * List<NepremicninWithNaslovDTO> nepremicnins =
+     * nepremicninService.getAllNepremicninsWithNaslov();
+     * return new ResponseEntity<>(nepremicnins, HttpStatus.OK);
+     * }
+     */
 
     @GetMapping("/nepremicnineVseKarJe/{id}")
     public ResponseEntity<List<NepremicninWithNaslovDTO>> getNepremicninsWithNaslovById(@PathVariable Long id) {
@@ -104,7 +105,7 @@ public class NepremicnineController {
     }
 
     @GetMapping("/nepremicnineVseKarJee/{naziv}")
-        public ResponseEntity<List<Nepremicnine>> vrniNepremicninoPoNazivu(@PathVariable("naziv") String naziv) {
+    public ResponseEntity<List<Nepremicnine>> vrniNepremicninoPoNazivu(@PathVariable("naziv") String naziv) {
         List<Nepremicnine> nepremicnineList = nepremicninaDao.vrniNepremicninePoNazivu(naziv);
         return new ResponseEntity<>(nepremicnineList, HttpStatus.OK);
     }
@@ -115,22 +116,26 @@ public class NepremicnineController {
         return new ResponseEntity<>(nepremicnineList, HttpStatus.OK);
     }
 
-    //vrniNepremicninePoNazivuInCeni
-    //getNepPoNazivInCeni
-/*
-    @GetMapping("/nepremicninePoNazivuINceni/{naziv}/{cena}")
-    public ResponseEntity<List<Nepremicnine>> vrniNepremicnino(@PathVariable("naziv") String naziv,@PathVariable("cena") Long cena) {
-        List<Nepremicnine> nepremicnineList = nepremicninaDao.vrniNepremicninePoNazivuInCeni(naziv, cena);
-        return new ResponseEntity<>(nepremicnineList, HttpStatus.OK);
-    }*/
+    // vrniNepremicninePoNazivuInCeni
+    // getNepPoNazivInCeni
+    /*
+     * @GetMapping("/nepremicninePoNazivuINceni/{naziv}/{cena}")
+     * public ResponseEntity<List<Nepremicnine>>
+     * vrniNepremicnino(@PathVariable("naziv") String naziv,@PathVariable("cena")
+     * Long cena) {
+     * List<Nepremicnine> nepremicnineList =
+     * nepremicninaDao.vrniNepremicninePoNazivuInCeni(naziv, cena);
+     * return new ResponseEntity<>(nepremicnineList, HttpStatus.OK);
+     * }
+     */
 
     @GetMapping("/nepremicineNazivCena/{naziv}/{cena}")
-    public ResponseEntity<List<Nepremicnine>> vrniNepremicnino(@PathVariable("naziv") String naziv,@PathVariable("cena") Long cena) {
+    public ResponseEntity<List<Nepremicnine>> vrniNepremicnino(@PathVariable("naziv") String naziv,
+            @PathVariable("cena") Long cena) {
         List<Nepremicnine> nepremicnineList = nepremicninaDao.vrniNepremicninePoNazivuInCeni(naziv, cena);
         return new ResponseEntity<>(nepremicnineList, HttpStatus.OK);
     }
 
-    //tole ne dela
-
+    // tole ne dela
 
 }
