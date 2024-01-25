@@ -16,3 +16,5 @@ public class DemoApplication {
 	}
 
 }
+
+// vzpostavitev komukiacije z zaledjem
