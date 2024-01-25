@@ -104,34 +104,33 @@ public class NepremicnineController {
     }
 
     @GetMapping("/nepremicnineVseKarJee/{naziv}")
-    public ResponseEntity<List<NepremicninWithNaslovDTO>> getNepByNaziv(@PathVariable String naziv) {
-        List<NepremicninWithNaslovDTO> nepremicnins = nepremicninService.getNepPoNaziv(naziv);
-        return new ResponseEntity<>(nepremicnins, HttpStatus.OK);
+        public ResponseEntity<List<Nepremicnine>> vrniNepremicninoPoNazivu(@PathVariable("naziv") String naziv) {
+        List<Nepremicnine> nepremicnineList = nepremicninaDao.vrniNepremicninePoNazivu(naziv);
+        return new ResponseEntity<>(nepremicnineList, HttpStatus.OK);
     }
 
     @GetMapping("/nepremicnineVseKarJeee/{cena}")
-    public ResponseEntity<List<NepremicninWithNaslovDTO>> getNepByCena(@PathVariable Long cena) {
-        List<NepremicninWithNaslovDTO> nepremicnins = nepremicninService.getNepPoCen(cena);
-        return new ResponseEntity<>(nepremicnins, HttpStatus.OK);
+    public ResponseEntity<List<Nepremicnine>> vrniNepremicninoPoCeni(@PathVariable("cena") Long cena) {
+        List<Nepremicnine> nepremicnineList = nepremicninaDao.vrniNepremicninePoCeni(cena);
+        return new ResponseEntity<>(nepremicnineList, HttpStatus.OK);
     }
 
+    //vrniNepremicninePoNazivuInCeni
     //getNepPoNazivInCeni
+/*
+    @GetMapping("/nepremicninePoNazivuINceni/{naziv}/{cena}")
+    public ResponseEntity<List<Nepremicnine>> vrniNepremicnino(@PathVariable("naziv") String naziv,@PathVariable("cena") Long cena) {
+        List<Nepremicnine> nepremicnineList = nepremicninaDao.vrniNepremicninePoNazivuInCeni(naziv, cena);
+        return new ResponseEntity<>(nepremicnineList, HttpStatus.OK);
+    }*/
 
     @GetMapping("/nepremicineNazivCena/{naziv}/{cena}")
-    public ResponseEntity<List<NepremicninWithNaslovDTO>> getNepByNazivCena(@PathVariable String naziv,@PathVariable Long cena) {
-        List<NepremicninWithNaslovDTO> nepremicnins = nepremicninService.getNepPoNazivInCeni(naziv, cena);
-        return new ResponseEntity<>(nepremicnins, HttpStatus.OK);
+    public ResponseEntity<List<Nepremicnine>> vrniNepremicnino(@PathVariable("naziv") String naziv,@PathVariable("cena") Long cena) {
+        List<Nepremicnine> nepremicnineList = nepremicninaDao.vrniNepremicninePoNazivuInCeni(naziv, cena);
+        return new ResponseEntity<>(nepremicnineList, HttpStatus.OK);
     }
 
     //tole ne dela
-    @GetMapping("/nepremicineNazivCenaTip/{naziv}/{cena}/{tip_nepremicnine}")
-    public ResponseEntity<List<NepremicninWithNaslovDTO>> getNepByNazivCenaTip(
-            @PathVariable String naziv,
-            @PathVariable Long cena,
-            @PathVariable String tip_nepremicnine
-    ) {
-        List<NepremicninWithNaslovDTO> nepremicnins = nepremicninService.getNepPoNazivuCeniTipu(naziv, cena, tip_nepremicnine);
-        return new ResponseEntity<>(nepremicnins, HttpStatus.OK);
-    }
+
 
 }
