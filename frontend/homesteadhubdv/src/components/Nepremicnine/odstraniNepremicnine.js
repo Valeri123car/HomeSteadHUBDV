@@ -162,3 +162,4 @@ const NepremicnineApp = () => {
 
 export default NepremicnineApp;
 //update nepremicnine
+//delete nepremicnine
