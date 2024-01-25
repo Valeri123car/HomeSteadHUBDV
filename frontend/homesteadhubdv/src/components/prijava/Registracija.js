@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import emailjs from "emailjs-com";
+//import emailjs from "emailjs-com";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Navbar from "../Navbar/Navbar";
 import { useNavigate } from "react-router-dom";
+import emailjs from "@emailjs/browser"
 
 const Registracija = () => {
   const [ime, setIme] = useState("");
@@ -17,7 +18,10 @@ const Registracija = () => {
   //5 ur sem rabu za tole ta shit xD
   const sendEmail = () => {
     const templateParams = {
+      to_name: ime,
       to_email: gmail,
+      from_name: "HomeSteadHUBDV",
+      message: "Uspešno ste se registrirali. Želimo Vam prijetno iskanje stereh nad glavo :)",
       subject: "Subject of the email",
       body: "Body of the email",
     };
@@ -51,7 +55,7 @@ const Registracija = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(uporabnik),
-      }).then(() => {n
+      }).then(() => {
         console.log("nov uporabnik dodan");
         alert("uspesno dodan uporabnik");
         sendEmail();
@@ -81,6 +85,7 @@ const Registracija = () => {
           />
           <TextField
             label="Mail"
+            name = "email_from"
             variant="outlined"
             value={gmail}
             onChange={(event) => setGmail(event.target.value)}
