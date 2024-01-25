@@ -4,7 +4,7 @@ import Navbar from "../Navbar/Navbar";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { Link, useNavigate } from "react-router-dom";
-//d sads ad sas das ds a
+//sdsadsa
 function Prijava() {
   const [gmail, setGmail] = useState("");
   const [geslo, setGeslo] = useState("");
