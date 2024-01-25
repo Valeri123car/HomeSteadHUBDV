@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -23,10 +24,34 @@ public class UporabnikController {
     @Autowired
     private UporabnikRepository uporabnikDao;
 
-    @GetMapping("/vsiUporabniki")
-    public ResponseEntity<List<Uporabnik>> vrniVseUporabnike(@PathVariable("gmail") String gmail) {
-        List<Uporabnik> uporabniki = uporabnikDao.vrniUporabnika(gmail);
-        return new ResponseEntity<>(uporabniki, HttpStatus.OK);
+    // @GetMapping("/vsiUporabniki")
+    // public Iterable<Uporabnik> vrniVseUporabnika1() {
+    // return uporabnikDao.findAll();
+    // }
+
+    @GetMapping("/uporabnikiTest")
+    public ResponseEntity<List<Uporabnik>> vrniUporabnikaTest() {
+        List<Object[]> uporabnikList = uporabnikDao.vrniUporabnikaTest();
+
+        List<Uporabnik> convertedList = convertToObjectList(uporabnikList);
+
+        return new ResponseEntity<>(convertedList, HttpStatus.OK);
+    }
+
+    private List<Uporabnik> convertToObjectList(List<Object[]> objectList) {
+        List<Uporabnik> uporabnikList = new ArrayList<>();
+
+        for (Object[] objects : objectList) {
+
+            Uporabnik uporabnik = new Uporabnik();
+            uporabnik.setIdUporabnik((Long) objects[0]);
+            uporabnik.setIme((String) objects[1]);
+            uporabnik.setPriimek((String) objects[2]);
+            uporabnik.setGmail((String) objects[3]);
+            uporabnikList.add(uporabnik);
+        }
+
+        return uporabnikList;
     }
 
     @PostMapping("/dodajUporabnika")

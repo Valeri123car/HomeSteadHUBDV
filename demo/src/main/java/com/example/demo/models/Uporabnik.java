@@ -28,14 +28,10 @@ public class Uporabnik {
         this.tipUporabnika = tipUporabnika;
     }
 
-
-
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tip_uporabnika_idTip_uporabnika")
     @JsonIgnore
     private Tip_uporabnika tip_uporabnika;
-
 
     @OneToMany(mappedBy = "uporabnik", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Nepremicnine> nepremicnine = new ArrayList<>();
@@ -47,7 +43,6 @@ public class Uporabnik {
 
     @OneToMany(mappedBy = "uporabnik", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Termin_rezervacija> rezervacije = new ArrayList<>();
-
 
     public Long getIdUporabnik() {
         return idUporabnik;

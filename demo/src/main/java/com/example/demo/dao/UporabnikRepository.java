@@ -13,8 +13,8 @@ import java.util.Optional;
 
 public interface UporabnikRepository extends CrudRepository<Uporabnik, Long> {
 
-    @Query("select gmail from Uporabnik")
-    List<Uporabnik> vrniUporabnika(@Param("gmail") String gmail);
+    @Query("SELECT u.idUporabnik, u.ime, u.priimek, u.gmail FROM Uporabnik u")
+    List<Object[]> vrniUporabnikaTest();
 
     // LOGIN
     @Query("select u from Uporabnik u where u.gmail = :gmail and u.geslo = :geslo")
