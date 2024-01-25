@@ -17,7 +17,6 @@ import java.util.Map;
 import java.util.Optional;
 
 //zbris     "origins"
-@CrossOrigin("http://localhost:3000")
 @RestController
 public class UporabnikController {
 
@@ -48,6 +47,9 @@ public class UporabnikController {
             uporabnik.setIme((String) objects[1]);
             uporabnik.setPriimek((String) objects[2]);
             uporabnik.setGmail((String) objects[3]);
+            uporabnik.setGeslo((String) objects[4]);
+            uporabnik.setTelefonska((String) objects[5]);
+            uporabnik.setTipUporabnika((String) objects[6]);
             uporabnikList.add(uporabnik);
         }
 
@@ -79,5 +81,35 @@ public class UporabnikController {
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
         }
+    }
+
+    @DeleteMapping("/uporabnikiTest/{id}")
+    public ResponseEntity<Object> izbrisiUporabnika(@PathVariable("id") Long id) {
+        if (!uporabnikDao.existsById(id)) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("uporabnik ni najden?");
+        }
+
+        try {
+            uporabnikDao.deleteById(id);
+            return ResponseEntity.ok("uporabnik uspesno zbrisan");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error deleting nepremicnina");
+        }
+    }
+
+    @PutMapping("/uporabnikiTest/{id}")
+    public ResponseEntity<Object> updateUporabnika(@PathVariable long id,
+            @RequestBody Uporabnik uporabnikAtributi) {
+        Uporabnik obstojociUporabniki = uporabnikDao.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "nepremicnina ni najdena"));
+
+        obstojociUporabniki.setIme(uporabnikAtributi.getIme());
+        obstojociUporabniki.setPriimek(uporabnikAtributi.getPriimek());
+        obstojociUporabniki.setGmail(uporabnikAtributi.getGmail());
+        obstojociUporabniki.setGeslo(uporabnikAtributi.getGeslo());
+        obstojociUporabniki.setTelefonska(uporabnikAtributi.getTelefonska());
+
+        uporabnikDao.save(obstojociUporabniki);
+        return ResponseEntity.ok("uporabnik okay :D");
     }
 }

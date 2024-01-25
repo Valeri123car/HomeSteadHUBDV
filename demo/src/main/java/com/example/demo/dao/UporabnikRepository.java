@@ -13,7 +13,7 @@ import java.util.Optional;
 
 public interface UporabnikRepository extends CrudRepository<Uporabnik, Long> {
 
-    @Query("SELECT u.idUporabnik, u.ime, u.priimek, u.gmail FROM Uporabnik u")
+    @Query("SELECT u.idUporabnik, u.ime, u.priimek, u.gmail, u.geslo, u.telefonska, u.tipUporabnika FROM Uporabnik u")
     List<Object[]> vrniUporabnikaTest();
 
     // LOGIN
