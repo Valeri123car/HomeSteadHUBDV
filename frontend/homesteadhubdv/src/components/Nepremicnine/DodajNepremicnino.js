@@ -22,8 +22,7 @@ const App = () => {
   const [slika, setSlika] = useState("");
   const [ulica, setUlica] = useState("");
   const [st, setSt] = useState("");
-  const [tip_nepremicnine_idTip_nepremicnine, setTip_nepremicnine] =
-    useState(0);
+  const [tip_nepremicnine] = useState(0);
   const [idUporabnika, setUporabnik] = useState(
     sessionStorage.getItem("uporabnik")
   );
@@ -53,7 +52,7 @@ const App = () => {
       opis,
       cena,
       slika,
-      tip_nepremicnine_idTip_nepremicnine,
+      tip_nepremicnine: { idTip_Nepremicnine: 1 },
       idUporabnika,
     };
 

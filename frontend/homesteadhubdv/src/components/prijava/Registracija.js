@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Navbar from "../Navbar/Navbar";
 import { useNavigate } from "react-router-dom";
-import emailjs from "@emailjs/browser"
+import emailjs from "@emailjs/browser";
 
 const Registracija = () => {
   const [ime, setIme] = useState("");
@@ -21,7 +21,8 @@ const Registracija = () => {
       to_name: ime,
       to_email: gmail,
       from_name: "HomeSteadHUBDV",
-      message: "Uspešno ste se registrirali. Želimo Vam prijetno iskanje stereh nad glavo :)",
+      message:
+        "Uspešno ste se registrirali. Želimo Vam prijetno iskanje stereh nad glavo :)",
       subject: "Subject of the email",
       body: "Body of the email",
     };
@@ -62,7 +63,7 @@ const Registracija = () => {
     ) {
       alert("Izpolni vsa polja");
     } else {
-      fetch("http://localhost:8080/api/v1/uporabniki/dodajUporabnika", {
+      fetch("http://localhost:8080/api/v1/dodajUporabnika", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(uporabnik),
@@ -96,7 +97,7 @@ const Registracija = () => {
           />
           <TextField
             label="Mail"
-            name = "email_from"
+            name="email_from"
             variant="outlined"
             value={gmail}
             onChange={(event) => setGmail(event.target.value)}
