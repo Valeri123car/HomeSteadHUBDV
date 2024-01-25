@@ -18,7 +18,6 @@ import java.util.Optional;
 //zbris     "origins"
 @CrossOrigin("http://localhost:3000")
 @RestController
-@RequestMapping("/uporabniki")
 public class UporabnikController {
 
     @Autowired
