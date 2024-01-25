@@ -1,41 +1,40 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import api from "../../services/api";
-import Navbar from "../Navbar/Navbar";
+import React, { useState } from "react";
+import emailjs from "emailjs-com";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { Link, useNavigate } from "react-router-dom";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
+import Navbar from "../Navbar/Navbar";
+import { useNavigate } from "react-router-dom";
 
-function Registracija() {
+const Registracija = () => {
   const [ime, setIme] = useState("");
   const [priimek, setPriimek] = useState("");
   const [gmail, setGmail] = useState("");
   const [telefonska, setTelefonska] = useState("");
   const [geslo, setGeslo] = useState("");
-  //nevem kako naredit da fking tuj ključ se vpise
   const [tipUporabnika, setTipUporabnika] = useState(2);
   const navigate = useNavigate();
 
-  //   const dodajUporabnika = () => {
-  //     api
-  //       .post("/api/v1/uporabniki", {
-  //         //http://localhost:8080/api/v1/uporabniki
-  //         ime: ime,
-  //         priimek: priimek,
-  //         gmail: email,
-  //         telefonska: telefonska,
-  //         geslo: geslo,
-  //       })
-  //       .then((result) => console.log(result.data));
-  //   };
+  //5 ur sem rabu za tole ta shit xD
+  const sendEmail = () => {
+    const templateParams = {
+      to_email: gmail,
+      subject: "Subject of the email",
+      body: "Body of the email",
+    };
 
-  //tak bs ej
+    emailjs
+      .send("service_dflgghd", "template_klzzada", templateParams, "rlIAwJ47OVWhBqfdu")
+      .then(
+        (response) => {
+          console.log("Email sent successfully:", response);
+        },
+        (error) => {
+          console.error("Error sending email:", error);
+        }
+      );
+  };
 
   const dodajUporabnika = () => {
-    //howwwwwwww
-
     const uporabnik = {
       ime,
       priimek,
@@ -44,24 +43,21 @@ function Registracija() {
       geslo,
       tipUporabnika,
     };
-    if (
-      ime == "" ||
-      priimek == "" ||
-      gmail == "" ||
-      telefonska == "" ||
-      geslo == ""
-    ) {
+
+    if (ime === "" || priimek === "" || gmail === "" || telefonska === "" || geslo === "") {
       alert("Izpolni vsa polja");
-    } else
+    } else {
       fetch("http://localhost:8080/api/v1/uporabniki/dodajUporabnika", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(uporabnik),
-      }).then(() => {
+      }).then(() => {n
         console.log("nov uporabnik dodan");
         alert("uspesno dodan uporabnik");
+        sendEmail();
         navigate("/prijava");
       });
+    }
   };
 
   return (
@@ -102,13 +98,6 @@ function Registracija() {
             onChange={(event) => setGeslo(event.target.value)}
           />
 
-          {/* <TextField
-            label="Tip uporabnika"
-            variant="outlined"
-            value={tip_uporabnika}
-            onChange={(event) => setIdTip_uporabnika(event.target.value)}
-          /> */}
-
           <Button className="prijavaButton" onClick={dodajUporabnika}>
             Registracija
           </Button>
@@ -116,6 +105,6 @@ function Registracija() {
       </div>
     </div>
   );
-}
+};
 
 export default Registracija;
