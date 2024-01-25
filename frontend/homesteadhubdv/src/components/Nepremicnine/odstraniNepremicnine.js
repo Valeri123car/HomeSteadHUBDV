@@ -3,6 +3,7 @@ import axios from "axios";
 import Navbar from "../Navbar/Navbar";
 import Button from "@mui/material/Button";
 import { useParams, Link } from "react-router-dom";
+import "../../css/odstraniNepremicnino.css"; 
 
 const NepremicnineApp = () => {
   const [data, setData] = useState([]);
@@ -79,8 +80,8 @@ const NepremicnineApp = () => {
   };
 
   return (
-    <div>
-      <Navbar />
+    <><Navbar />
+    <div class="okence1">
       <table>
         <thead>
           <tr>
@@ -123,35 +124,26 @@ const NepremicnineApp = () => {
           <input
             type="text"
             value={updateData.naziv}
-            onChange={(e) =>
-              setUpdateData({ ...updateData, naziv: e.target.value })
-            }
-          />
+            onChange={(e) => setUpdateData({ ...updateData, naziv: e.target.value })} />
 
           <label>Opis:</label>
           <input
             type="text"
             value={updateData.opis}
-            onChange={(e) =>
-              setUpdateData({ ...updateData, opis: e.target.value })
-            }
-          />
+            onChange={(e) => setUpdateData({ ...updateData, opis: e.target.value })} />
 
           <label>Cena:</label>
           <input
             type="number"
             value={updateData.cena}
-            onChange={(e) =>
-              setUpdateData({ ...updateData, cena: e.target.value })
-            }
-          />
+            onChange={(e) => setUpdateData({ ...updateData, cena: e.target.value })} />
 
           <button type="button" onClick={handleUpdateSubmit}>
             Update Nepremicnina
           </button>
         </form>
       </div>
-    </div>
+    </div></>
   );
 };
 
