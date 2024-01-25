@@ -11,16 +11,13 @@ function Prijava() {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    const response = await fetch(
-      "http://localhost:8080/api/v1/uporabniki/login",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ gmail, geslo }),
-      }
-    );
+    const response = await fetch("http://localhost:8080/api/v1/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ gmail, geslo }),
+    });
 
     if (response.ok) {
       const data = await response.json();

@@ -63,7 +63,7 @@ const Registracija = () => {
     ) {
       alert("Izpolni vsa polja");
     } else {
-      fetch("http://localhost:8080/api/v1/uporabniki/dodajUporabnika", {
+      fetch("http://localhost:8080/api/v1/dodajUporabnika", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(uporabnik),
