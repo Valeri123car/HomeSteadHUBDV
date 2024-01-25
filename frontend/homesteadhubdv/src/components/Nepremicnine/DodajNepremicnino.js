@@ -91,6 +91,7 @@ const App = () => {
           <TextField
             label="Cena"
             variant="outlined"
+            type="number"
             onChange={(event) => setCena(event.target.value)}
           />
           <TextField

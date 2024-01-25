@@ -9,7 +9,7 @@ public class NepremicninWithNaslovDTO {
     private String naziv;
     private String opis;
     private String slika;
-    private String cena;
+    private Long cena;
 
     //naslov
     private Long idNaslov;
@@ -35,7 +35,7 @@ public class NepremicninWithNaslovDTO {
     public NepremicninWithNaslovDTO() {
     }
 
-    public NepremicninWithNaslovDTO(Long idNepremicnine, String naziv, String opis, String slika, String cena, Long idNaslov, String ulica, String st, Long idUporabnik, String telefonska, Long id, String kraj,Long idTip_Nepremicnine, String Tip_nepremicnine) {
+    public NepremicninWithNaslovDTO(Long idNepremicnine, String naziv, String opis, String slika, Long cena, Long idNaslov, String ulica, String st, Long idUporabnik, String telefonska, Long id, String kraj,Long idTip_Nepremicnine, String Tip_nepremicnine) {
         this.idNepremicnine = idNepremicnine;
         this.naziv = naziv;
         this.opis = opis;
@@ -84,11 +84,11 @@ public class NepremicninWithNaslovDTO {
         this.slika = slika;
     }
 
-    public String getCena() {
+    public Long getCena() {
         return cena;
     }
 
-    public void setCena(String cena) {
+    public void setCena(Long cena) {
         this.cena = cena;
     }
 

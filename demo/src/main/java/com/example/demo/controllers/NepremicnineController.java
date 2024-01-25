@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 import com.example.demo.DTO.NepremicninWithNaslovDTO;
 import com.example.demo.DTO.NepremicnineService;
+import com.example.demo.DTO.ZdruzeneRepository;
 import com.example.demo.dao.NepremicnineRepository;
 import com.example.demo.models.Naslov;
 import com.example.demo.models.Nepremicnine;
@@ -19,6 +20,8 @@ public class NepremicnineController {
 
     @Autowired
     private NepremicnineRepository nepremicninaDao;
+
+    //private ZdruzeneRepository zdruzeneRepository;
 
     @GetMapping("/nepremicnine")
     public Iterable<Nepremicnine> vrniHise() {
@@ -44,6 +47,16 @@ public class NepremicnineController {
         List<Nepremicnine> nepremicnineList = nepremicninaDao.vrniNepremicnino(id);
         return new ResponseEntity<>(nepremicnineList, HttpStatus.OK);
     }
+
+    //vrniFiltr
+
+    /*
+    @GetMapping("/vseKarJe")
+    public ResponseEntity<List<Nepremicnine>> vrniFiltr() {
+        List<Nepremicnine> nepremicnineList = nepremicninaDao.vrniFiltr();
+        return new ResponseEntity<>(nepremicnineList, HttpStatus.OK);
+    }
+*/
 
     @DeleteMapping("/nepremicnine/{id}")
     public ResponseEntity<Object> izbrisiNepremicnino(@PathVariable("id") Long id) {
@@ -87,6 +100,37 @@ public class NepremicnineController {
     @GetMapping("/nepremicnineVseKarJe/{id}")
     public ResponseEntity<List<NepremicninWithNaslovDTO>> getNepremicninsWithNaslovById(@PathVariable Long id) {
         List<NepremicninWithNaslovDTO> nepremicnins = nepremicninService.getNepremicninsWithNaslovById(id);
+        return new ResponseEntity<>(nepremicnins, HttpStatus.OK);
+    }
+
+    @GetMapping("/nepremicnineVseKarJee/{naziv}")
+    public ResponseEntity<List<NepremicninWithNaslovDTO>> getNepByNaziv(@PathVariable String naziv) {
+        List<NepremicninWithNaslovDTO> nepremicnins = nepremicninService.getNepPoNaziv(naziv);
+        return new ResponseEntity<>(nepremicnins, HttpStatus.OK);
+    }
+
+    @GetMapping("/nepremicnineVseKarJeee/{cena}")
+    public ResponseEntity<List<NepremicninWithNaslovDTO>> getNepByCena(@PathVariable Long cena) {
+        List<NepremicninWithNaslovDTO> nepremicnins = nepremicninService.getNepPoCen(cena);
+        return new ResponseEntity<>(nepremicnins, HttpStatus.OK);
+    }
+
+    //getNepPoNazivInCeni
+
+    @GetMapping("/nepremicineNazivCena/{naziv}/{cena}")
+    public ResponseEntity<List<NepremicninWithNaslovDTO>> getNepByNazivCena(@PathVariable String naziv,@PathVariable Long cena) {
+        List<NepremicninWithNaslovDTO> nepremicnins = nepremicninService.getNepPoNazivInCeni(naziv, cena);
+        return new ResponseEntity<>(nepremicnins, HttpStatus.OK);
+    }
+
+    //tole ne dela
+    @GetMapping("/nepremicineNazivCenaTip/{naziv}/{cena}/{tip_nepremicnine}")
+    public ResponseEntity<List<NepremicninWithNaslovDTO>> getNepByNazivCenaTip(
+            @PathVariable String naziv,
+            @PathVariable Long cena,
+            @PathVariable String tip_nepremicnine
+    ) {
+        List<NepremicninWithNaslovDTO> nepremicnins = nepremicninService.getNepPoNazivuCeniTipu(naziv, cena, tip_nepremicnine);
         return new ResponseEntity<>(nepremicnins, HttpStatus.OK);
     }
 

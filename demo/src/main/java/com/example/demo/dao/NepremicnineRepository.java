@@ -1,5 +1,6 @@
 package com.example.demo.dao;
 
+import com.example.demo.DTO.NepremicninWithNaslovDTO;
 import com.example.demo.models.Nepremicnine;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -26,4 +27,23 @@ public interface NepremicnineRepository extends CrudRepository<Nepremicnine, Lon
 
     @Query("SELECT n FROM Nepremicnine n WHERE n.idNepremicnine = :id")
     List<Nepremicnine> vrniNepremicnine(@Param("id") Long id);
+
+    //List<Nepremicnine> vrniNepremicninePoLokaciji(String kraj);
+
+    @Query("SELECT n FROM Nepremicnine n WHERE n.naziv LIKE %:naziv%")
+    List<Nepremicnine> vrniNepremicninePoNazivu(@Param("naziv") String naziv);
+
+
+
+    @Query("SELECT n FROM Nepremicnine n WHERE n.cena <= :cena")
+    List<Nepremicnine> vrniNepremicninePoCeni(@Param("cena") Long cena);
+
+    @Query("SELECT n FROM Nepremicnine n WHERE n.naziv LIKE %:naziv% AND n.cena <= :cena")
+    List<Nepremicnine> vrniNepremicninePoNazivuInCeni(@Param("naziv") String naziv, @Param("cena") Long cena);
+
+    /*@Query("SELECT new com.example.NepremicninWithNaslovDTO(n) FROM Nepremicnine n WHERE n.naziv LIKE %:naziv% AND n.cena <= :cena AND n.tipNepremicnine = :tip_nepremicnine")
+    List<NepremicninWithNaslovDTO> vrniNepremicninePoNazivuCeniTipu(@Param("naziv") String naziv, @Param("cena") Long cena, @Param("tip_nepremicnine") String tip_nepremicnine);
+*/
 }
+
+

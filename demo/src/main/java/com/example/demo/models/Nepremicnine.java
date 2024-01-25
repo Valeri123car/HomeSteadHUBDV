@@ -15,7 +15,7 @@ public class Nepremicnine {
     private String naziv;
     private String opis;
     private String slika;
-    private String cena;
+    private Long cena;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tip_nepremicnine_idTip_nepremicnine")
@@ -74,11 +74,11 @@ public class Nepremicnine {
         this.slika = slika;
     }
 
-    public String getCena() {
+    public Long getCena() {
         return cena;
     }
 
-    public void setCena(String cena) {
+    public void setCena(Long cena) {
         this.cena = cena;
     }
 

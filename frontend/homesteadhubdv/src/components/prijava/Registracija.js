@@ -23,7 +23,12 @@ const Registracija = () => {
     };
 
     emailjs
-      .send("service_dflgghd", "template_klzzada", templateParams, "rlIAwJ47OVWhBqfdu")
+      .send(
+        "service_dflgghd",
+        "template_klzzada",
+        templateParams,
+        "rlIAwJ47OVWhBqfdu"
+      )
       .then(
         (response) => {
           console.log("Email sent successfully:", response);
@@ -44,14 +49,20 @@ const Registracija = () => {
       tipUporabnika,
     };
 
-    if (ime === "" || priimek === "" || gmail === "" || telefonska === "" || geslo === "") {
+    if (
+      ime === "" ||
+      priimek === "" ||
+      gmail === "" ||
+      telefonska === "" ||
+      geslo === ""
+    ) {
       alert("Izpolni vsa polja");
     } else {
       fetch("http://localhost:8080/api/v1/uporabniki/dodajUporabnika", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(uporabnik),
-      }).then(() => {n
+      }).then(() => {
         console.log("nov uporabnik dodan");
         alert("uspesno dodan uporabnik");
         sendEmail();
