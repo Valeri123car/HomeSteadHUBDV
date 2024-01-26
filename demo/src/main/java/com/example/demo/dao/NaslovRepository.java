@@ -16,4 +16,9 @@ public interface NaslovRepository extends CrudRepository<Naslov, Long> {
 /*
     @Query("SELECT n.idNaslov FROM Naslov n WHERE n.ulica = Hanover AND n.st = 12")
     List<Naslov> vrniIdNaslovaa();*/
+
+
+    //mal testiranja
+
+
 }

@@ -63,10 +63,10 @@ public class UporabnikController {
 
     @PostMapping("/login")
     public ResponseEntity<Object> login(@RequestBody Map<String, String> credentials) {
-        String username = credentials.get("gmail");
+        String email = credentials.get("gmail");
         String password = credentials.get("geslo");
 
-        Optional<Uporabnik> userOptional = uporabnikDao.vrniUporabnika(username, password);
+        Optional<Uporabnik> userOptional = uporabnikDao.vrniUporabnika(email, password);
 
         if (userOptional.isPresent()) {
             Uporabnik user = userOptional.get();

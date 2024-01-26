@@ -28,9 +28,11 @@ public class NaslovController {
     }
 
     @PostMapping("/dodajNaslov")
-    public Naslov dodajNaslov(@RequestBody Naslov naslov){
+    public Naslov dodajNaslov(@RequestBody Naslov naslov) {
         return naslovDao.save(naslov);
     }
+
+
 
 
 
@@ -39,6 +41,11 @@ public class NaslovController {
                                                     @PathVariable("st") String st) {
         List<Long> idNaslovList = naslovDao.vrniIdNaslova(ulica, st);
         return new ResponseEntity<>(idNaslovList, HttpStatus.OK);
+    }
+
+    @GetMapping("/naslovTest")
+    public Iterable<Naslov> test() {
+        return naslovDao.findAll();
     }
 
 }

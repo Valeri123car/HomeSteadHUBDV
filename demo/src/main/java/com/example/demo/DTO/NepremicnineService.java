@@ -46,7 +46,7 @@ public class NepremicnineService {
                 );
                 dtoList.add(dto);
             } else {
-                // Handle null values or log a warning
+
             }
         }
         return dtoList;
