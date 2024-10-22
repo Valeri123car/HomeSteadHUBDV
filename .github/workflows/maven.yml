@@ -18,7 +18,6 @@ jobs:
         env:
           MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: homesteaddv
-          MYSQL_USER: root
           MYSQL_PASSWORD: root
         options: >-
           --health-cmd="mysqladmin ping --silent"
